@@ -19,7 +19,6 @@
     "url": "https://github.com/GabrielCardoz0/projeto15-chesspunch-back/issues"
   },
   "homepage": "https://github.com/GabrielCardoz0/projeto15-chesspunch-back#readme",
-  
   "devDependencies": {
     "nodemon": "^2.0.20"
   },
