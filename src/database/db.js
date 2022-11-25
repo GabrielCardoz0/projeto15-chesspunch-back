@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 
-const mongoClient = MongoClient(process.env.MOGO_URI);
+const mongoClient = new MongoClient(process.env.MOGO_URI);
 
 try {
     await mongoClient.connect();
@@ -11,7 +11,7 @@ try {
     console.log(error);
 }
 
-const db = mongoClient.db("ChessPush");
+export const db = mongoClient.db("ChessPush");
 export const userCollection = db.collection("users");
 export const sessionsCollections = db.collection("sessions");
 export const productsCollections = db.collection("products");
