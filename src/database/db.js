@@ -1,17 +1,17 @@
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
+ 
+const mongoclient = new MongoClient(process.env.MONGO_URI);
 
-const mongoClient = new MongoClient(process.env.MOGO_URI);
-
-try {
-    await mongoClient.connect();
-    console.log("MongoDB Connected!");
-} catch (error) {
-    console.log(error);
+try{
+    await mongoclient.connect();
+    console.log("Mongodb Connected!");
+} catch(err){
+    console.log(err);
 }
 
-export const db = mongoClient.db("ChessPush");
+export const db = mongoclient.db("ChessPush");
 export const userCollection = db.collection("users");
 export const sessionsCollections = db.collection("sessions");
 export const productsCollections = db.collection("products");
