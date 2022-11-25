@@ -1,10 +1,5 @@
-export default function productsControllers(req,res) {
-
-    //ainda deve ser feita a buscaa da lista de produtos no database
-    //lembrar de deixar esta função como async
-    
-
-    //array de teste enquanto a API não está online:
+export default function productsfindControllers(req,res) {
+    //array de produtos usado por enquanto que o mongo ainda não foi incluso:
     const arr = [
         {
         name:"Tabuleiro em madeira de pinheiro dobrável",
@@ -71,5 +66,9 @@ export default function productsControllers(req,res) {
         }
     ];
 
-    return res.send(arr);
+
+
+    const {id} = req.params
+    const itemFind = arr.filter(o => o.name === id)
+    res.send(itemFind[0])
 };
