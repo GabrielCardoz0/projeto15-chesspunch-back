@@ -4,7 +4,7 @@ export default async function productsfindControllers(req,res) {
 
     try{
         const {id} = req.params;
-
+        console.log(id);
         const itemFind = await sessionsCollections.findOne({_id:id});
 
         if(!itemFind) return res.send(404);
