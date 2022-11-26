@@ -1,17 +1,18 @@
+import { ObjectId } from "mongodb";
 import { productsCollections } from "../database/db.js";
 
-export default async function productsfindControllers(req,res) {
-    try{
-        const {id} = req.params;
+export default async function productsfindControllers(req, res) {
+    try {
+        const { id } = req.params;
+        const itemFind = await productsCollections.findOne(ObjectId(id))
 
-        const listaProducts = await productsCollections.find().toArray();
-        const itemFind = listaProducts.filter(obj => obj._id == id);
+        if (!itemFind) {
+            return res.sendStatus(404);
+        }
 
-        // if(!itemFind[0]) return res.sendStatus(404);
+        res.send(itemFind);
 
-        res.send(itemFind[0]);
-
-    }catch(err){
+    } catch (err) {
         console.log(err);
         res.sendStatus(500);
     };
