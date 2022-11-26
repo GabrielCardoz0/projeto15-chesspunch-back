@@ -7,7 +7,7 @@ export default async function productsfindControllers(req,res) {
         const listaProducts = await productsCollections.find().toArray();
         const itemFind = listaProducts.filter(obj => obj._id == id);
 
-        if(!itemFind[0]) return res.sendStatus(404);
+        // if(!itemFind[0]) return res.sendStatus(404);
 
         res.send(itemFind[0]);
 
