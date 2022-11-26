@@ -1,18 +1,18 @@
-import { sessionsCollections } from "../database/db.js";
+import { productsCollections } from "../database/db.js";
 
 export default async function productsfindControllers(req,res) {
-
     try{
         const {id} = req.params;
-        console.log(id);
-        const itemFind = await sessionsCollections.findOne({_id:id});
 
-        if(!itemFind) return res.send(404);
+        const listaProducts = await productsCollections.find().toArray();
+        const itemFind = listaProducts.filter(obj => obj._id == id);
 
-        res.send(itemFind);
+        // if(!itemFind[0]) return res.sendStatus(404);
+
+        res.send(itemFind[0]);
 
     }catch(err){
         console.log(err);
-        res.sendstatus(500);
+        res.sendStatus(500);
     };
 };
