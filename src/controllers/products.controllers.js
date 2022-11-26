@@ -5,6 +5,7 @@ try{
     const array = await productsCollections.find().toArray();
     res.send(array)
 }catch(err){
-    log
+    console.log(err);
+    res.sendStatus(500);
 }
 };
