@@ -2,13 +2,18 @@ import { userCollection } from "../database/db.js";
 import bcrypt from "bcrypt";
 import { userSchema } from "../models/user.model.js";
 
-export function userSchemaValidation(req, res, next) {
+export async function userSchemaValidation(req, res, next) {
     const user = req.body;
 
     const { error } = userSchema.validate(user, { abortEarly: false });
     if (error) {
         const errors = error.details.map((detail) => detail.message);
         res.status(400).send(errors)
+    }
+
+    const userExist = await userCollection.findOne({email: user.email});
+    if(userExist){
+        return res.status(409).send({message: "Este e-mail já esta cadastrado"})
     }
 
     res.locals.user = user;
