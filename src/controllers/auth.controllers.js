@@ -24,7 +24,7 @@ export async function singIn(req, res) {
     
     try {
         await sessionsCollections.insertOne({ token, userId: user._id });
-        res.send({ token })
+        res.send({token:token , name: user.name})
     } catch (err) {
         console.log(err);
         res.sendStatus(500);
