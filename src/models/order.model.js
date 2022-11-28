@@ -15,9 +15,10 @@ export const creditCardSchema = joi.object({
 
 export const orderSchema = joi.object({
     method: joi.string().required(),
-    num: joi.string().required(),
+    num: joi.number().required(),
     adress: joi.string().required(),
     city: joi.string().required(),
     estado: joi.string().required().min(2).max(2),
+    arrProducts: joi.array(),
     totalValue:joi.number().required()
 });
