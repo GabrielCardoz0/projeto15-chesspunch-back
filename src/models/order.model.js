@@ -9,7 +9,7 @@ export const creditCardSchema = joi.object({
     city: joi.string().required(),
     estado: joi.string().required().min(2).max(2),
     arrProducts: joi.array(),
-    totalValue:joi.number().required()
+    total:joi.number().required()
 });
 
 
@@ -20,5 +20,5 @@ export const orderSchema = joi.object({
     city: joi.string().required(),
     estado: joi.string().required().min(2).max(2),
     arrProducts: joi.array(),
-    totalValue:joi.number().required()
+    total:joi.number().required()
 });
